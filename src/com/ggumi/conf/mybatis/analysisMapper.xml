@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="analysis">
+	<select id="selectByJobNameJobCode" resultType="job">
+		select job_name, job_code from job order by job_code
+	</select>
+	
+	<select id="selectGu" resultType="area">
+		select h_code, h_dong, gu from area	where h_dong=gu and h_code!=1100000000 order by gu
+	</select>
+	
+	<select id="selectDong" parameterType="int" resultType="area">
+		select h_code,gu,h_dong from area where h_code!=1100000000 and h_code>#{h_code} and #{h_code}+1000000>h_code order by h_dong
+	</select>
+	
+	<select id="selectSalesByHCode" parameterType="int" resultType="sales">
+		 select round(avg(e.monthly_sales)) as monthly_sales from comm_block c, estimated_sales e where c.comm_code=e.comm_code and h_code=#{h_code} group by c.h_code
+	</select>
+
+	<select id="selectSalesByJob" parameterType="String" resultType="sales">
+		select round(avg(e.monthly_sales)) as monthly_sales from comm_block c, estimated_sales e where c.comm_code=e.comm_code and job_code=#{job_code}
+	</select>
+
+	<select id="selectSalesTotal" parameterType="HashMap" resultType="sales">
+		select round(avg(e.monthly_sales)) as monthly_sales from comm_block c, estimated_sales e where c.comm_code=e.comm_code and h_code=#{h_code} and job_code=#{job_code}
+	</select>
+	
+	<select id="selectPopulationByHCode" parameterType="int" resultType="comm">
+		select round(avg(population_no)) as population_no from comm_block where h_code=#{h_code}
+	</select>
+	
+	<select id="selectPopulationByGu" parameterType="String" resultType="comm">
+		select sum(c.population_no) as population_no from comm_block c, area a where c.h_code=a.h_code and gu=#{gu}
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>

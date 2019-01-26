@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<insert id="insert" parameterType="admin">
+		insert into admin(admin_no, admin_id, admin_pw, admin_name, admin_regi_date, admin_approval)
+		values(seq_admin.NEXTVAL,#{admin_id},#{admin_pw},#{admin_name},sysdate,0)
+	</insert>
+
+	<select id="selectByIdPw" parameterType="admin" resultType="admin">
+		select * from admin where admin_id= #{admin_id} and admin_pw = #{admin_pw}
+	</select>
+
+	<!-- 
+	<insert id="insert" parameterType="member">
+		insert into member(mem_no, id, pw, nickname, name, birth, sex, phone_no,
+						 email, email_avail, mem_regi_date, mem_category_code)
+		
+		values(seq_member.NEXTVAL,#{id},#{pw},#{nickname},#{name},TO_DATE(#{birth},'YYYY-MM-DD'),#{sex},#{phone_no},
+				#{email},#{email_avail},sysdate,#{mem_category_code})
+	</insert>
+	 -->
+	
+	<!-- 
+	<select id="selectCustomer" resultType="customer">
+		select * from tb_customer
+	</select>
+	-->
+	
+</mapper>

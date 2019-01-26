@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTO Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	 
+	<typeAliases>
+		<typeAlias alias="member" type="com.ggumi.vo.member.MemberVo"/>
+		<typeAlias alias="admin" type="com.ggumi.vo.admin.AdminVo"/>
+		<typeAlias alias="estate" type="com.ggumi.vo.member.EstateVo"/>
+		<typeAlias alias="realtor" type="com.ggumi.vo.member.RealtorVo"/>
+		<typeAlias alias="job" type="com.ggumi.vo.analysis.JobVo"/>
+		<typeAlias alias="area" type="com.ggumi.vo.analysis.AreaVo"/>
+		<typeAlias alias="myStore" type="com.ggumi.vo.member.MyStoreVo"/>
+		<typeAlias alias="sales" type="com.ggumi.vo.analysis.EstimatedSalesVo"/>
+		<typeAlias alias="comm" type="com.ggumi.vo.analysis.CommBlockVo"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/ggumi/conf/mybatis/memberMapper.xml"/>
+		<mapper resource="com/ggumi/conf/mybatis/adminMapper.xml"/>
+		<mapper resource="com/ggumi/conf/mybatis/analysisMapper.xml"/>
+	</mappers>
+	
+</configuration>
