@@ -100,4 +100,13 @@ local.properties
 
 .sts4-cache/
 
+
+### Java-Web ###
+## ignoring target file
+target/
+
+
+### Son Add###
+.settings/
+
 # End of https://www.gitignore.io/api/eclipse
